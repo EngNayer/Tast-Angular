@@ -1,0 +1,370 @@
+// Font Import Cdn
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+// Importing Bootstrap SCSS file
+
+@import '~bootstrap/scss/bootstrap';
+
+// Colors Page
+
+$bodyColor          : #161616;
+$mainTextColor      : #BFBFBF;
+$mainColor          : #EBAA14;
+$overColor          : #303030;
+$sectionColor       : #131313;
+$inputColor         : #1C1C1C;
+$whiteColor         : #FFF;
+
+// Mixin
+
+@mixin transition{
+    transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+}
+
+@mixin fontFamily($size, $name){
+    font: $size 'Poppins', $name;
+}
+
+@mixin absoluteItem($top, $translate, $center){
+    position: absolute;
+    top: $top;
+    transform: translateY($translate);
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@mixin scrollContain{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    contain: size style layout;
+}
+
+// Local Style Page
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a, button, input, textarea, i{
+    @include transition;
+}
+
+img{
+    object-fit: cover;
+}
+
+a{
+    text-decoration: none !important;
+    cursor: pointer;
+    color: $mainTextColor;
+}
+
+i{
+    vertical-align: middle;
+    color: $mainTextColor;
+    &:hover, &:focus{
+        color: $mainColor
+    }
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 10px 0;
+    color: $mainTextColor;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    display: inline-block;
+}
+
+// Style Scroll Site
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-track {
+    background: $mainColor;
+    border: 1px solid $mainColor
+}
+
+::-webkit-scrollbar-thumb {
+    background: $mainColor;
+}
+
+// Style Button Site
+
+button{
+    background-color: transparent;
+    border: 0;
+}
+
+.btn-default{
+    background: $mainColor !important;
+    color: #fff !important;
+    border: 1px solid $mainColor !important;
+}
+
+.bt-button{
+    cursor: pointer;
+    border-radius: 3px;
+    height: 40px;
+    line-height: 40px;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    &:hover{
+        background-color: transparent !important;
+        color: #FFF !important;
+    }
+}
+
+// Classes Colors
+
+.color-default{
+    color: $mainColor !important;
+}
+
+.color-black{
+    color: $overColor !important;
+}
+
+.color-text{
+    color: $mainTextColor !important;
+}
+
+.color-wight{
+    color: $whiteColor !important;
+}
+
+// selection
+
+::selection {
+    background: $mainColor;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: $mainColor;
+    color: #fff;
+}
+
+// Style Form Validation
+
+input{
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid $inputColor;
+    color: $mainColor;
+    background-color: $inputColor;
+    border-radius: 5px;
+    height: 45px;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+textarea{
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid $inputColor;
+    color: $mainColor;
+    background-color: $inputColor;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+    min-height: 210px;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder{
+    color: $mainTextColor;
+    opacity: 1;
+}
+
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder{
+    opacity: 0;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: $mainColor !important;
+}
+
+// Flex Basic
+
+.flex{
+    display: flex;
+}
+
+.align-item-center{
+    align-items: center;
+}
+
+.align-content-center{
+    align-content: center;
+}
+
+.justify-content-space{
+    justify-content: space-between;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.flex-no-wrap{
+    flex-wrap: nowrap !important;
+}
+
+.row-reverse{
+    flex-direction: row-reverse;
+}
+
+.flex-start{
+    justify-content: flex-start;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+// Class For Used
+
+.min-body{
+    min-height: 400px;
+}
+
+// Loading Page
+
+.loader{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  z-index: 99999;
+  .boxLoading {  
+    width: 50px;
+    height: 50px;
+    position: relative;
+    &:before {
+      content: '';
+      width: 50px;
+      height: 5px;
+      background: #000;
+      opacity: 0.1;
+      position: absolute;
+      top: 59px;
+      left: 0;
+      border-radius: 50%;
+      animation: shadow .5s linear infinite;
+    }
+    &:after {
+      content: '';
+      width: 50px;
+      height: 50px;
+      background: #1A6844;
+      animation: animate .5s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 3px;
+    }
+  }
+  @keyframes animate {
+    17% {
+      border-bottom-right-radius: 3px;
+    }
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+  @keyframes shadow {
+    0%, 100% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
+}
+
+@keyframes rotate{
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale{
+  50%{
+    transform: scale(1.3);
+  }
+}
+
+// Item Style
+
+.item{
+    width: 100%;
+    margin: 10px;
+    border: 1px solid #DDD;
+    border-radius: 10px;
+    overflow: hidden;
+    img{
+        width: 100%;
+        height: 260px;
+    }
+    .info-item{
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+.table th, .table td {
+    padding: 15px;
+    border: 1px solid #dee2e6 !important;
+    text-align: center;
+    vertical-align: middle;
+}
