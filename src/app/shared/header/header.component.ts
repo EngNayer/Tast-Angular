@@ -15,7 +15,16 @@ export class HeaderComponent implements OnInit {
   constructor(private translate : TranslateService){}
 
   ngOnInit(): void {
+    
+    window.addEventListener('scroll', () => {
 
+      let headerTop:any             = document.getElementById('header-top');
+      if(window.scrollY > 50){
+        headerTop.classList.add("active-top");
+      }else {
+        headerTop.classList.remove("active-top");
+      }
+    });
   }
 
   switchLanguage(lang: string) {
